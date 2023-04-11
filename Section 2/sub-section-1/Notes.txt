@@ -1,0 +1,17 @@
+Vue.createApp({
+    //Data Binding
+    data(){
+        return {}
+    },
+    //Methods in Vue App : methods is an object
+    methods:{
+        any methods can be added like we do in JS Objects
+    }
+})
+
+Interpolation and Data Binding : {{courseGoal}}
+    ==> data options:  data(){}
+    ==> methods options: methods{}
+Binding Attributes with v-bind: v-bind:href="vueLink"
+Methods in Vue App : methods is an object
+Raw HTML content with v-html: <h2 v-html="courseGoalC"></h2>
