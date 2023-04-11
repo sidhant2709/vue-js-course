@@ -1,0 +1,57 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+  font-size: 62.5%;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid gray;
+  max-width: 1136px;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+a {
+  font-size: 2rem;
+  text-decoration: none;
+  color: blueviolet;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+#title {
+  text-align: center;
+}
+
+#user-goal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
