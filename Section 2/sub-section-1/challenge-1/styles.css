@@ -101,3 +101,20 @@ header {
   background-color: #dc9999;
   border-radius: 5rem;
 }
+#vue-control-part div {
+  margin: 0 auto;
+}
+
+#vue-control-part img {
+  border-radius: 1.6rem;
+  width: 60%;
+  height: 60%;
+}
+#vue-control-part input:focus {
+  outline: none;
+}
+#vue-control-part input {
+  width: 60%;
+  margin: 0 auto;
+  padding: 0.5rem;
+}

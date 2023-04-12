@@ -24,13 +24,20 @@
         <h1 id="title">Challenge 1!</h1>
       </header>
       <section id="vue-control-part">
-        <h2>My Name</h2>
+        <h2>{{myName}}</h2>
         <hr />
-        <p>My Age</p>
-        <p>My Age in 5 years</p>
-        <p>Random Number Between 0 and 9</p>
-        <p>Add Image Dynamically</p>
-        <p>Add Input Field</p>
+        <p>{{myAge}}</p>
+        <p>My Age in 5 years: {{calcAge()}}</p>
+        <p>{{(Math.random()).toFixed(2)}}</p>
+        <p>{{randomNumberGenerator()}}</p>
+        <div>
+          <img v-bind:src="imgSrc" v-bind:alt="imgAltText" />
+        </div>
+        <input
+          type="text"
+          v-bind:value="myName"
+          placeholder="Prepopulated Value"
+        />
       </section>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
