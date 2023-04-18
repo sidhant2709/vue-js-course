@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css"/>
+    <title>Vue: Rendering Content and Lists</title>
+  </head>
+  <body>
+    <div id="root">
+      <header>
+        <h1 id="title">Vue: Rendering Content and Lists</h1>
+      </header>
+      <section id="vue-controlled-section">
+        <h2>Events In Action</h2>
+        <hr />
+        <div>
+          <input type="text" v-model="inputGoal"/>
+          <button @click="addGoals">Add Goal</button>
+        </div>
+        <span v-if="goals.length=== 0">No Goals have been added yet- please start adding some!</span>
+        <ul v-else>
+          <li v-for="(goal,index) in goals" :key="goal" @click="removeGoal(index)">{{goal}}</li>
+        </ul>
+        <!-- <ul>
+          <li v-for="num in 10">{{num}}</li>
+        </ul> -->
+        <!-- <ul>
+          <li v-for="(value,key,idx) in {name: 'Sidhant', age: 29, course: 'VueJs'}">{{key}} : {{value}} - {{idx}}</li>
+        </ul> -->
+      </section>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
