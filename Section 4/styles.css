@@ -94,7 +94,29 @@ button {
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  color: aqua;
+  color: rgb(12, 12, 12);
+  font-family: 'Sedgwick Ave Display', cursive;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
+  background-color: #e798cd;
+  border-color: #f7b0df;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
+}
+
+button:disabled {
+  background-color: #ccc;
+  border-color: #ccc;
+  box-shadow: none;
+  color: #3f3f3f;
+  cursor: not-allowed;
 }
 
 
@@ -128,7 +150,7 @@ section {
   margin-bottom: 3rem;
 }
 
-.health__bar {
+.health__box {
   background: rgba(220, 191, 191, 0.65);
   box-shadow: 0 8px 25px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4.5px);
@@ -139,8 +161,18 @@ section {
   padding: 1.6rem;
 }
 
-.health__bar-progress {
+.health__bar {
+  background: rgba(220, 191, 191, 0.65);
+  box-shadow: 0 8px 25px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
   height: 3.5rem;
+}
+
+.health__bar-progress {
+  height: 100%;
   background-color: green;
 }
 

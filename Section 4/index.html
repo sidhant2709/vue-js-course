@@ -17,22 +17,27 @@
     <header>
       <h1 id="title">Monster Slayer</h1>
     </header>
-    <section>
+    <section id="game-section">
       <div class="left-content">
         <div class="health__section">
-          <div class="health__bar">
+          <div class="health__box">
             <h2>Monster Health</h2>
-            <div class="health__bar-progress"></div>
+            <div class="health__bar">
+              <div class="health__bar-progress" :style="monsterBarStyles"></div>
+            </div>
           </div>
-          <div class="health__bar">
+
+          <div class="health__box">
             <h2>Your Health</h2>
-            <div class="health__bar-progress"></div>
+            <div class="health__bar">
+              <div class="health__bar-progress" :style="playerBarStyles"></div>
+            </div>
           </div>
         </div>
         <div class="button__section">
-          <button class="btn">Attack</button>
-          <button class="btn">Special Attack</button>
-          <button class="btn">Heal</button>
+          <button class="btn" @click="attackMonster">Attack</button>
+          <button :disabled="mayUseSpecialAttack" class="btn" @click="specialAttackMonster">Special Attack</button>
+          <button class="btn" @click="healPlayer">Heal</button>
           <button class="btn">Surrender</button>
         </div>
       </div>
