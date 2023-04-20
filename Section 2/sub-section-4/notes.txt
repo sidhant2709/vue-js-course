@@ -1,9 +1,0 @@
-:style="{borderColor: boxAClicked ? 'red' : '#ccc'}" // Inline style
-
-:class="boxAClicked ? 'demo active' : 'demo'"
-
-:class="{demo: true, active: boxBClicked}"
-
-class="demo" :class="{active: boxCClicked}"
-
-:class="[{cssClass}, {active: boxEClicked}, {visible: true}, {hidden: show}]"

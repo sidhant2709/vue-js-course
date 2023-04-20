@@ -1,5 +1,0 @@
-v-bind:value="name" v-on:input="setName" is same as v-model="name" // two way binding
-
-Advance Reactivity
-Computed Properties
-Watchers
