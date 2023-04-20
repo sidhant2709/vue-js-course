@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
-  <title>Vue: Monster Slayer</title>
+  <title>Monster Slayer Game</title>
 </head>
 
 <body>
@@ -17,29 +17,54 @@
     <header>
       <h1 id="title">Monster Slayer</h1>
     </header>
-    <section>
+    <section id="game-section">
       <div class="left-content">
         <div class="health__section">
-          <div class="health__bar">
+          <div class="health__box">
             <h2>Monster Health</h2>
-            <div class="health__bar-progress"></div>
+            <div class="health__bar">
+              <div class="health__bar-progress" :style="monsterBarStyles"></div>
+            </div>
           </div>
-          <div class="health__bar">
+
+          <div class="health__box">
             <h2>Your Health</h2>
-            <div class="health__bar-progress"></div>
+            <div class="health__bar">
+              <div class="health__bar-progress" :style="playerBarStyles"></div>
+            </div>
           </div>
         </div>
-        <div class="button__section">
-          <button class="btn">Attack</button>
-          <button class="btn">Special Attack</button>
-          <button class="btn">Heal</button>
-          <button class="btn">Surrender</button>
+        <div class="container" v-if="winner">
+          <h2>Game Over!</h2>
+          <h3 v-if="winner === 'monster'">You Lost!</h3>
+          <h3 v-else-if="winner === 'player'">You Won!</h3>
+          <h3 v-else>Match Drawn</h3>
+          <button class="btn" @click="startGame">Start New Game</button>
+        </div>
+        <div class="button__section" v-else>
+          <button class="btn" @click="attackMonster">Attack</button>
+          <button :disabled="mayUseSpecialAttack" class="btn" @click="specialAttackMonster">Special Attack</button>
+          <button class="btn" @click="healPlayer">Heal</button>
+          <button class="btn" @click="surrender">Surrender</button>
         </div>
       </div>
       <div class="right-content">
-        <div class="battle__details">
-          <h2>Battle Section</h2>
-
+        <div class="battle__details" id="log">
+          <h2>Battle Log</h2>
+          <ul>
+            <li v-for="logMessage in logMessages">
+              <span
+                :class="{'log--player': logMessage.actionBy==='player','log--monster':logMessage.actionBy==='monster'}">
+                {{logMessage.actionBy === 'player' ? 'Player':'Monster'}}
+              </span>
+              <span v-if="logMessage.actionType === 'heal'"> heals himself for
+                <span class="log--heal">{{logMessage.actionValue}}</span>
+              </span>
+              <span v-else>
+                attacks and deals <span class="log--damage">{{logMessage.actionValue}}</span>
+              </span>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
