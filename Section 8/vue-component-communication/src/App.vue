@@ -3,27 +3,31 @@
     <header>
       <h1>My Friends</h1>
     </header>
+    <add-friend @add-contact="addContact"></add-friend>
     <ul>
-      <friend-contact
+      <!-- <friend-contact
         name="Jane Doe"
         phone-number="0123 44444 55"
         email-address="janedoe@abc.com"
-        is-fav="true"
+        :is-fav="true"
       ></friend-contact>
       <friend-contact
         name="John Doe"
         phone-number="0123 45555 55"
         email-address="johndoe@abc.com"
-        is-fav="false"
-      ></friend-contact>
+        :is-fav="false"
+      ></friend-contact> -->
 
       <friend-contact
         v-for="friend in friends"
         :key="friend.id"
+        :id="friend.id"
         :name="friend.name"
         :phone-number="friend.phone"
         :email-address="friend.email"
         :is-fav="friend.fav"
+        @toggle-favorite="toggleFavoriteStatus"
+        @delete="deleteFriend"
       />
     </ul>
   </section>
@@ -51,6 +55,28 @@ export default {
       ],
     };
   },
+  methods: {
+    toggleFavoriteStatus(friendId) {
+      // alert("This Works");
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.fav = !identifiedFriend.fav;
+    },
+    addContact(name, phone, email) {
+      const newFriendContact = {
+        id: new Date().toISOString(),
+        name: name,
+        phone: phone,
+        email: email,
+        fav: false,
+      };
+      this.friends.push(newFriendContact);
+    },
+    deleteFriend(friendId) {
+      this.friends = this.friends.filter((friend) => friend.id !== friendId);
+    },
+  },
 };
 </script>
 
@@ -59,6 +85,8 @@ export default {
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -99,7 +127,7 @@ header {
 
 #app h2 {
   font-size: 2rem;
-  border-bottom: 4px solid #ccc;
+  border-bottom: 3px solid #e6e6e6;
   color: #58004d;
   margin: 0 0 1rem 0;
 }
